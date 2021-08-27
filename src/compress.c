@@ -473,7 +473,7 @@ void WriteCompressedGraphToFile(Substructure *sub, Parameters *parameters,
    Graph *compressedNegGraph;
    char subLabelString[TOKEN_LEN];
    char overlapLabelString[TOKEN_LEN];
-   char filename[FILE_NAME_LEN];
+   char filename[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
    Label label;
 
    // parameters used
