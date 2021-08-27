@@ -1148,7 +1148,7 @@ void WriteUpdatedGraphToFile(Substructure *sub, Parameters *parameters)
 void WriteUpdatedIncToFile(Substructure *sub, Parameters *parameters)
 {
    FILE *fp;
-   char filename[FILE_NAME_LEN];
+   char filename[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
    ULONG example;
    ULONG numExamples;
    ULONG start = 0;
