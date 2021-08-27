@@ -203,12 +203,9 @@ int main (int argc, char **argv)
 void ISubdue(Parameters *parameters)
 {
    FILE *outputFile;
-   BOOLEAN done;
    BOOLEAN ignoreBoundary = FALSE;
    BOOLEAN newData = FALSE;
    ULONG incrementCount = 0;
-   ULONG sizeOfPosIncrement;
-   ULONG sizeOfNegIncrement;
    Increment *increment;
    InstanceList *boundaryInstances = NULL;
    SubList *localSubList = NULL;
@@ -233,15 +230,6 @@ void ISubdue(Parameters *parameters)
 
       if (parameters->evalMethod == EVAL_SETCOVER)
          SetIncrementNumExamples(parameters);
-      else
-      {
-         // We have to set the size here instead of in evaluate, otherwise
-         // it gets reset at each iteration to the compressed graph size
-         sizeOfPosIncrement =
-            IncrementSize(parameters, GetCurrentIncrementNum(parameters), POS);
-         sizeOfNegIncrement =
-            IncrementSize(parameters, GetCurrentIncrementNum(parameters), NEG);
-      }
 
       printf("Increment #%lu: %lu positive vertices, %lu positive edges\n",
          incrementCount+1, increment->numPosVertices, increment->numPosEdges);
@@ -255,7 +243,6 @@ void ISubdue(Parameters *parameters)
             parameters->negGraph->numVertices, parameters->negGraph->numEdges);
       }
 
-      done = FALSE;
       printf("%lu unique labels\n", parameters->labelList->numLabels);
       printf("\n");
 
@@ -264,7 +251,6 @@ void ISubdue(Parameters *parameters)
       if (localSubList->head == NULL)
       {
          printf("No local substructures found.\n\n");
-         done = TRUE;
       }
       else
       {
@@ -386,7 +372,6 @@ Parameters *GetParameters(int argc, char *argv[])
    int i;
    double doubleArg;
    ULONG ulongArg;
-   BOOLEAN limitSet = FALSE;
    FILE *outputFile;
 
    parameters = (Parameters *) malloc(sizeof(Parameters));
@@ -473,7 +458,6 @@ Parameters *GetParameters(int argc, char *argv[])
             exit(1);
          }
          parameters->limit = ulongArg;
-         limitSet = TRUE;
       }
       else if (strcmp(argv[i], "-maxsize") == 0)
       {

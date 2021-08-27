@@ -77,18 +77,12 @@ void WriteResultsToFile(SubList *subList, FILE *subsFile,
                         Increment *increment, Parameters *parameters)
 {
    SubListNode *subListNode = NULL;
-   ULONG subSize;
-   ULONG incSize;
 
-   incSize = increment->numPosVertices + increment->numPosEdges +
-             increment->numNegVertices + increment->numNegEdges;
    if (subList != NULL)
    {
       subListNode = subList->head;
       if(subListNode != NULL)
       {
-         subSize = subListNode->sub->definition->numVertices +
-                   subListNode->sub->definition->numEdges;
          WriteGraphToFile(subsFile, subListNode->sub->definition,
                           parameters->labelList, 0, 0, 
                           subListNode->sub->definition->numVertices, TRUE);

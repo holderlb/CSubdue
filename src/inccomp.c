@@ -29,9 +29,6 @@ void AdjustMetrics(Substructure *sub, Parameters *parameters)
    double sizeOfPosIncrement = 0.0;
    double sizeOfNegIncrement = 0.0;
    double sizeOfSub = 0.0;
-   Increment *increment;
-	
-   increment = GetCurrentIncrement(parameters);
 
    // The increment pos/neg value is stored when the increment is first read in
    // and so measures the size of the original graph
@@ -82,7 +79,6 @@ SubList *ComputeBestSubstructures(Parameters *parameters, int listSize)
    SubListNode *incrementSubListNode;
    IncrementListNode *incNodePtr;
    Increment *increment;
-   Increment *currentInc;
    double subValue;
    BOOLEAN found = FALSE;
    ULONG numPosInstances = 0;
@@ -93,7 +89,6 @@ SubList *ComputeBestSubstructures(Parameters *parameters, int listSize)
 	
    completeSubList = AllocateSubList();
    incNodePtr = parameters->incrementList->head;
-   currentInc = GetCurrentIncrement(parameters);
 	
    // traverse each increment starting with the first increment
    while (incNodePtr != NULL)

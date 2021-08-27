@@ -223,7 +223,7 @@ void NumPosNegExamples(char *fileName, ULONG *numPosEgs, ULONG *numNegEgs)
 //
 // PURPOSE: Writes out examples from the input file into the training and
 // testing files according to the given fold.  The egFolds array holds the
-// fold assisgnment of each example.  Examples assigned to the given fold
+// fold assignment of each example.  Examples assigned to the given fold
 // are written to the testing file, and the remaining examples are written
 // to the training file.  If numFolds = 1, then all examples from the
 // inputFile are copied to both the train and test files.
@@ -243,13 +243,24 @@ void WriteTrainTestFiles(char *inputFileName, char *trainFileName,
    ULONG i;
    BOOLEAN egIsXP = FALSE;  // true if example designated by XP
    BOOLEAN egIsXN = FALSE;  // true if example designated by XN
+   int status;
 
    if (numFolds == 1) 
    {
       sprintf(command, "%s %s %s", CP_CMD, inputFileName, trainFileName);
-      system(command);
+      status = system(command);
+      if (status != 0)
+      {
+    	  fprintf(stderr, "ERROR: unable to run command: %s\n", command);
+    	  //exit (1);
+      }
       sprintf(command, "%s %s %s", CP_CMD, inputFileName, testFileName);
-      system(command);
+      status = system(command);
+      if (status != 0)
+      {
+    	  fprintf(stderr, "ERROR: unable to run command: %s\n",command);
+    	  //exit (1);
+      }
       return;
    }
 
@@ -360,7 +371,7 @@ void RunSubdue(int argc, char **argv, char *trainFileName,
    status = system(command);
    if (status != 0) 
    {
-      fprintf(stderr, "ERROR: unable to run command: %s\n",command);
+      fprintf(stderr, "ERROR: unable to run command: %s\n", command);
       exit (1);
    }
 }
@@ -379,7 +390,13 @@ void RunSubdue(int argc, char **argv, char *trainFileName,
 void RemoveFile(char *fileName)
 {
    char command[TOKEN_LEN];
+   int status;
 
    sprintf(command, "%s %s", RM_CMD, fileName);
-   system(command);
+   status = system(command);
+   if (status != 0)
+   {
+	   fprintf(stderr, "ERROR: unable to run command: %s\n", command);
+	   //exit (1);
+   }
 }
