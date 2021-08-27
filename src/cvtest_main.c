@@ -54,10 +54,10 @@ void RemoveFile(char *);
 int main(int argc, char **argv)
 {
    Parameters *parameters;
-   char inputFileName[TOKEN_LEN];
-   char trainFileName[TOKEN_LEN];
-   char testFileName[TOKEN_LEN];
-   char subsFileName[TOKEN_LEN];
+   char inputFileName[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
+   char trainFileName[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
+   char testFileName[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
+   char subsFileName[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
    ULONG numPosEgs;
    ULONG numNegEgs;
    ULONG numEgs;
