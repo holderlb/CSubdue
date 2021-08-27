@@ -54,7 +54,7 @@ void RemoveFile(char *);
 int main(int argc, char **argv)
 {
    Parameters *parameters;
-   char inputFileName[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
+   char inputFileName[FILE_NAME_LEN];
    char trainFileName[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
    char testFileName[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
    char subsFileName[FILE_NAME_LEN + FILE_NAME_LEN]; // Twice the size to suppress warnings
