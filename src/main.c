@@ -672,7 +672,7 @@ Parameters *GetParameters(int argc, char *argv[])
 //          after graph data is obtained.
 //
 // NOTE:    This code was separated from the other parametric processing
-//          because of the need to handle some parameters differentely when
+//          because of the need to handle some parameters differently when
 //          the incremental version of SUBDUE is executed.
 //---------------------------------------------------------------------------
 

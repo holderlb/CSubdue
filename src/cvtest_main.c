@@ -238,7 +238,7 @@ void WriteTrainTestFiles(char *inputFileName, char *trainFileName,
    FILE *testFile;
    FILE *outFile;
    char token[TOKEN_LEN];
-   char command[TOKEN_LEN];
+   char command[COMMAND_LEN];
    ULONG lineNo = 1;
    ULONG i;
    BOOLEAN egIsXP = FALSE;  // true if example designated by XP
@@ -350,7 +350,7 @@ void WriteTrainTestFiles(char *inputFileName, char *trainFileName,
 void RunSubdue(int argc, char **argv, char *trainFileName,
                char *subsFileName)
 {
-   char command[TOKEN_LEN];
+   char command[COMMAND_LEN];
    int i;
    int status;
 
@@ -389,7 +389,7 @@ void RunSubdue(int argc, char **argv, char *trainFileName,
 
 void RemoveFile(char *fileName)
 {
-   char command[TOKEN_LEN];
+   char command[COMMAND_LEN];
    int status;
 
    sprintf(command, "%s %s", RM_CMD, fileName);
