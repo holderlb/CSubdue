@@ -133,6 +133,7 @@ ULONG GetLabelIndex(Label *label, LabelList *labelList)
                   labelIndex = i;
                   found = TRUE;
                }
+               break;
             default:
                break;  // error
          }
