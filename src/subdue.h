@@ -79,7 +79,7 @@
 
 // General defines
 #define LIST_SIZE_INC  100  // initial size and increment for realloc-ed lists
-#define TOKEN_LEN     256  // maximum length of token from input graph file
+#define TOKEN_LEN     1024 // maximum length of token from input graph file
 #define FILE_NAME_LEN 512  // maximum length of file names
 #define COMMAND_LEN 2048   // maximum length of system commands
 #define COMMENT       '%'  // comment character for input graph file
